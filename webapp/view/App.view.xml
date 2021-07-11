@@ -1,0 +1,63 @@
+<mvc:View
+	controllerName="sap.ui.demo/walkthrough.controller.App"
+	xmlns:m="sap.m"
+	xmlns="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc"
+	height="900px"
+>
+	<m:Page
+		title="SAPUI5 Example Page!"
+		titleLevel="H1"
+		class="sapUiContentPadding"
+	>
+		<!--Wrap Table in a m:content (mobile) so we can display this non-mobile table on a m:Page (mobiel page)-->
+		<m:content>
+			<m:Panel>
+				<m:HBox>
+					<m:Input
+						placeholder="Firstname"
+						id="appInputFirstName"
+						width="250px"
+					/>
+					<m:Input
+						placeholder="Lastname"
+						id="appInputLastName"
+						width="250px"
+					/>
+				</m:HBox>
+				<m:Button
+					text="Add User"
+					press=".onAddUserPress"
+				/>
+				<m:Button
+					text="Remove selected"
+					press=".onRemoveUserPress"
+				/>
+			</m:Panel>
+			<m:Panel id="tablePanel">
+				<Table
+					id="userTable"
+					rows="{userData>/user}"
+					visibleRowCountMode="Interactive"
+					selectionMode="Multi"
+					enableSelectAll="false"
+				>
+					<columns>
+						<Column>
+							<m:Label text="Firstname"/>
+							<template>
+								<m:Text text="{userData>firstname}"/>
+							</template>
+						</Column>
+						<Column>
+							<m:Label text="Lastname"/>
+							<template>
+								<m:Text text="{userData>lastname}"/>
+							</template>
+						</Column>
+					</columns>
+				</Table>
+			</m:Panel>
+		</m:content>
+	</m:Page>
+</mvc:View>
